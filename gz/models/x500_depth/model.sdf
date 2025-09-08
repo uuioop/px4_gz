@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='x500_depth'>
+    <include merge='true'>
+      <uri>x500</uri>
+    </include>
+    
+    <include>
+      <uri>model://OakD-Lite</uri>
+      <name>depth_cam_front</name>
+      <pose>.12 .03 .242 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://mono_cam</uri>
+      <name>mono_cam_down</name>
+      <pose>0 0 .10 0 1.5707 0</pose>
+    </include>
+    
+    <joint name="CameraJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>depth_cam_front::camera_link</child> 
+      <pose relative_to="base_link">.12 .03 .242 0 0 0</pose>
+    </joint>
+
+    <joint name="DownCameraJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>mono_cam_down::camera_link</child>
+      <pose relative_to="base_link">0 0 0 0 1.5707 0</pose>
+    </joint>
+  </model>
+</sdf>
